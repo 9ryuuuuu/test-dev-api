@@ -1,0 +1,16 @@
+version: '3.1'
+services:
+  db:
+    image: postgres:13
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '2345:5432'
+    volumes: 
+      # zは権限エラー防止のため。 
+      - db:/var/lib/postgresql/data:z
+volumes:
+  db:
+    driver: local
