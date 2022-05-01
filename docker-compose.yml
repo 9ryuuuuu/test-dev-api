@@ -1,5 +1,22 @@
 version: '3.1'
 services:
+  api:
+    container_name: api
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./api:/code
+      - /code/node_modules
+    depends_on:
+      - db
+    command: ["npm", "run", "start"]
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DATABASE=postgres
+      - POSTGRES_PORT=2345
   db:
     image: postgres:13
     restart: always
