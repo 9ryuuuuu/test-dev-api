@@ -10,7 +10,7 @@ services:
       - /code/node_modules
     depends_on:
       - db
-    command: ["npm", "run", "start"]
+    command: ["npm", "run", "start:dev"]
     environment:
       - POSTGRES_HOST=db
       - POSTGRES_USER=postgres
